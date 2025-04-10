@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios';
+import axios, { AxiosError } from "axios";
 
 type Props = {
     endpoint: string,
@@ -13,7 +13,6 @@ export const api = async<TypeResponse>({
     data,
     withAuth = true
 }: Props) => {
-
     const instance = axios.create({
         baseURL: import.meta.env.VITE_API_BASE_URL
     })
@@ -29,8 +28,9 @@ export const api = async<TypeResponse>({
             data: method != 'GET' && data
         })
 
-        return request.data
-
+        return {
+            data: request.data
+        }
     } catch (error) {
         const e = error as AxiosError<{message: string}>
 
@@ -38,6 +38,4 @@ export const api = async<TypeResponse>({
             error: e.response?.data.message ?? e.message
         }
     }
-
-
 }

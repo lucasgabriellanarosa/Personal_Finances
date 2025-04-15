@@ -17,7 +17,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme == 'light' ? lightTheme : darkTheme}>
-      ...
+      Um texto qualquer
     </ThemeProvider>
   )
 }
